@@ -1,0 +1,14 @@
+action.package=org.domain.open18.session
+action.sources=/open18/src/hot
+eclipse.preferences.version=1
+model.package=org.domain.open18.entity
+model.sources=/open18/src/main
+seam.project.connection.profile=open18-app
+seam.project.deployment.type=war
+seam.project.settings.version=1.1
+seam.project.web.root.folder=/open18/WebContent
+seam.runtime.name=jboss-seam-2.3.1.Final
+seam.test.creating=false
+seam.test.project=open18-test
+test.package=org.domain.open18.test
+test.sources=/open18-test/test-src

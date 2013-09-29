@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources xmlns="http://www.jboss.org/ironjacamar/schema">
+    <datasource 
+        jndi-name="open18Datasource"
+        enabled="true" 
+        use-java-context="true" pool-name="open18Datasource_pool">
+        <connection-url>jdbc:mysql://localhost:3306/open18db</connection-url>
+        <driver>mysql-connector-java-5.1.26-bin.jar</driver>
+        <security>
+		      <user-name>open18app</user-name>
+		      <password>open18app1234</password>
+        </security>
+    </datasource>
+</datasources>
