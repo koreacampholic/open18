@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.0.xsd"
+      no-conversation-view-id="/facilityList.xhtml"
+      login-required="true">
+   
+   <begin-conversation join="true"/>
+   
+   <action execute="#{facilityHome.validateEntityFound}"
+      if="#{facilityHome.facilityId != null}"/>
+   <action execute="#{facilityHome.wire}"/>
+   
+   <param name="facilityFrom"/>
+   <param name="facilityId" value="#{facilityHome.facilityId}"/>
+
+   <navigation from-action="#{facilityHome.validateEntityFound}">
+      <rule if-outcome="invalid">
+         <redirect view-id="/facilityList.xhtml">
+            <message severity="WARN">
+              The facility you requested does not exist.
+            </message>
+         </redirect>
+      </rule>
+   </navigation>
+
+   <navigation from-action="#{facilityHome.persist}" evaluate="#{facilityHome.lastStateChange}">
+      <rule if-outcome="persisted" if="#{facilityHome.enterCourse}">
+         <redirect view-id="/courseEdit.xhtml">
+            <param name="courseFrom" value="Facility"/>
+            <message severity="INFO">   
+               Please enter course information for #{facilityHome.instance.name}.
+            </message>
+         </redirect>
+      </rule>
+      <rule if-outcome="persisted" if="#{!facilityHome.enterCourse}">
+		 <!-- seam-gen uses a conversation to manage the edit process -->
+		 <!-- you learn about conversations in chapter 7 -->
+         <end-conversation/> 
+         <redirect view-id="/facility.xhtml"/>
+      </rule>
+   </navigation>
+   
+   <navigation from-action="#{facilityHome.update}">
+       <end-conversation/>
+       <redirect view-id="/facility.xhtml"/>
+   </navigation>
+   
+   <navigation from-action="#{facilityHome.remove}">
+       <end-conversation/>
+       <redirect view-id="/facilityList.xhtml"/>
+   </navigation>
+   
+</page>

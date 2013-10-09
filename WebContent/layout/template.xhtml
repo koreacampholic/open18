@@ -1,19 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<f:view xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
    xmlns:ui="http://java.sun.com/jsf/facelets"
    xmlns:f="http://java.sun.com/jsf/core"
    xmlns:h="http://java.sun.com/jsf/html"
    xmlns:a="http://richfaces.org/a4j"
-   xmlns:s="http://jboss.org/schema/seam/taglib"
-   contentType="text/html">
-<h:html>
+   xmlns:s="http://jboss.org/schema/seam/taglib">
+<f:view contentType="text/html">
    <h:head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-      <title>open18</title>
+      <title>iopen18</title>
       <link rel="shortcut icon" href="#{request.contextPath}/favicon.ico"/>
-      <h:outputStylesheet name="theme.ecss"/>
-      <h:outputStylesheet name="theme.css"/>
+      <h:outputStylesheet library="css" name="theme.css" />
+<!--       <h:outputStylesheet library="css" name="styles.xcss" /> -->
+      
       <ui:insert name="head"/>
    </h:head>
    <h:body>
@@ -42,5 +42,5 @@
          </s:fragment>
       </div>
    </h:body>
-</h:html>
 </f:view>
+</html>

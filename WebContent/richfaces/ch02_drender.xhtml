@@ -1,0 +1,37 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.org/schema/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:a4j="http://richfaces.org/a4j" 
+    template="../layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="form">
+
+        <h:panelGrid>
+        	<h:selectOneRadio value="#{bean.selection}">
+        		<f:selectItem  itemValue="clock1" itemLabel="Clock 1"/>
+        		<f:selectItem  itemValue="clock2" itemLabel="Clock 2"/>
+        		<f:selectItem  itemValue="clock3" itemLabel="Clock 3"/>
+        	</h:selectOneRadio>
+        	<h:commandButton id="updateButton" value="Update">
+        		 <a4j:ajax event="click" execute="@form" 
+        			listener="#{bean.selectComponents}"
+        			render="#{bean.renderComponents}"></a4j:ajax>
+        	</h:commandButton>
+        	<h:panelGrid cellspacing="6">
+        		<h:outputText id="clock1" value="#{bean.clock1}" />
+        		<h:outputText id="clock2" value="#{bean.clock2}" />
+        		<h:outputText id="clock3" value="#{bean.clock3}" />
+        	</h:panelGrid>
+        </h:panelGrid>
+
+    </h:form>
+
+ </ui:define>
+</ui:composition>
