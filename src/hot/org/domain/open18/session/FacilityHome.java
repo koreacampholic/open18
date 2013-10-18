@@ -12,20 +12,20 @@ import org.domain.open18.entity.Course;
 import org.domain.open18.entity.Facility;
 
 @Name("facilityHome")
-public class FacilityHome extends EntityHome<Facility>
-{
-private boolean enterCourse = true;
+public class FacilityHome extends EntityHome<Facility> {
 	
+	private boolean enterCourse = true;
+
 	private String lastStateChange;
-	
+
 	public String getLastStateChange() {
 		return this.lastStateChange;
 	}
-	
+
 	public void setEnterCourse(boolean enterCourse) {
 		this.enterCourse = enterCourse;
-	}	
-	
+	}
+
 	public boolean isEnterCourse() {
 		return enterCourse;
 	}
@@ -60,7 +60,7 @@ private boolean enterCourse = true;
 		return getInstance() == null ? null : new ArrayList<Course>(
 				getInstance().getCourses());
 	}
-	
+
 	public String validateEntityFound() {
 		try {
 			this.getInstance();
@@ -70,7 +70,7 @@ private boolean enterCourse = true;
 
 		return this.isManaged() ? "valid" : "invalid";
 	}
-	
+
 	@Override
 	public String persist() {
 		lastStateChange = super.persist();

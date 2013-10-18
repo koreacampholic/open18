@@ -13,7 +13,10 @@
 			<supported-locale>en</supported-locale>
 			<supported-locale>fr</supported-locale>
 			<supported-locale>tr</supported-locale>
-		</locale-config>
+		</locale-config>	
+		
 	</application>
-
+	<lifecycle>
+		<phase-listener>org.domain.open18.listener.PhaseTracker</phase-listener>
+	</lifecycle>
 </faces-config>

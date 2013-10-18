@@ -27,6 +27,9 @@
 
    <!-- Make sure this URL pattern is the same as that used by the Faces Servlet -->
    <web:hot-deploy-filter url-pattern="*.seam"/>
+   
+   <web:character-encoding-filter  encoding="UTF-8" override-client="true" url-pattern="*.seam" />
+   
 
    <!-- If you are still using JBoss 4, uncomment this to have your PU started -->
 <!--   <persistence:entity-manager-factory name="entityManagerFactory"-->

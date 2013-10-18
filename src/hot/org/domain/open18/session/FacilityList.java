@@ -13,6 +13,11 @@ import org.domain.open18.entity.Facility;
 @Name("facilityList")
 public class FacilityList extends EntityQuery<Facility>
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3426985614336980845L;
+
 	@Logger
 	private Log log;
 	
@@ -30,6 +35,13 @@ public class FacilityList extends EntityQuery<Facility>
 			"lower(facility.zip) like concat(lower(#{facilityList.facility.zip}),'%')",};
 
 	private Facility facility = new Facility();
+	
+	/**
+	 * 
+	 */
+	public FacilityList(){
+		setRestrictionExpressionStrings(Arrays.asList(RESTRICTIONS));
+	}
 
 	@Override
 	public String getEjbql() {
