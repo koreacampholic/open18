@@ -1,0 +1,38 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.org/schema/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:a4j="http://richfaces.org/a4j" 
+    template="../layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="form">
+		<h:panelGrid columns="3">
+			<h:outputText value="Name:" />
+			<h:inputText id="name" value="#{bean2.name}"> 
+			<f:validateRequired></f:validateRequired>
+			<f:validateLength minimum="3"></f:validateLength>
+			<a4j:ajax event="blur" render="errorName" bypassUpdates="true"></a4j:ajax>
+			</h:inputText>
+			<h:message id="errorName" for="name"/>
+			
+			<h:outputText value="Age:" />
+			<h:inputText id="age" value="#{bean2.age}"> 
+			<f:validateRequired></f:validateRequired>
+			<f:validateLongRange minimum="0"></f:validateLongRange>
+			<a4j:ajax event="blur" render="errorAge" bypassUpdates="true"></a4j:ajax>
+			</h:inputText>
+			<h:message id="errorAge" for="age"/>
+		</h:panelGrid>	
+
+		<h:commandButton action="ch02_result" value="Register" />
+
+    </h:form>
+
+ </ui:define>
+</ui:composition>

@@ -1,0 +1,30 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:s="http://jboss.org/schema/seam/taglib"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:rich="http://richfaces.org/rich"
+    xmlns:a4j="http://richfaces.org/a4j" 
+    template="../layout/template.xhtml">
+
+<ui:define name="body">
+
+    <h:form id="form">
+		<h:panelGrid columns="2">
+			<h:outputText value="Name:" />
+			<h:inputText value="#{bean4model.name}" />
+			<h:outputText value="Echo:" />
+			<h:outputText value="#{bean4model.name}" id="echo"/>
+			<h:outputText value="Count:" />
+			<h:outputText value="#{bean4model.count}" id="count"/>
+		</h:panelGrid>
+<!-- 		<h:commandButton action="#{bean4.countAction()}" value="Submit" >
+			<f:ajax event="click" execute="@form" render="echo count"></f:ajax>
+		</h:commandButton>	  -->
+		<a4j:commandButton value="Submit" render="echo count" action="#{bean4.countAction()}"></a4j:commandButton>
+    </h:form>
+
+ </ui:define>
+</ui:composition>

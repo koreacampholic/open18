@@ -1,0 +1,49 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:s="http://jboss.org/schema/seam/taglib"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	template="../layout/template.xhtml">
+	<ui:define name="body">
+		<h:outputScript>
+			function ajaxRequestListener(event){
+				console.log('called ajaxReqeustListener() ::');
+				if(event.status == 'begin'){
+					if(!confirm('Are you sure want change the color?' +'('+event.status+')')){
+						document.form.reset();
+						return false;
+					}
+		        }
+				else if(event.status == 'complete'){
+					alert('Just before DOM update' + '(' + event.status+')');
+				}
+				else if(event.status == 'success'){
+					alert('Color changed. We told you so.' + '(' + event.status+')');
+				}
+			}
+			
+			function ajaxRequestBegin(){
+					if(!confirm('Are you sure want change the color?')){
+					    //console.log('sradio value :: '+document.getElementsByName('form:sradio')[0].value);					    
+						document.form.reset();
+						return false;
+					}
+			}
+		</h:outputScript>
+		<h:form id="form">
+			<h:panelGrid id="panel" style="background-color: #{bean3.color}">
+				<h:selectOneRadio id="sradio" value="#{bean3.color}">
+					<f:selectItem itemValue="red" itemLabel="Red" />
+					<f:selectItem itemValue="yellow" itemLabel="Yellow" />
+					<f:selectItem itemValue="blue" itemLabel="Blue" />
+					<a4j:ajax render="panel" onbegin="ajaxRequestBegin()"/>
+				</h:selectOneRadio>
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
